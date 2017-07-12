@@ -1,0 +1,112 @@
+#footer {
+    height: 80px;
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#socials {
+    align-self: center;
+    width: 50%;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255,255,255,.5);
+
+}
+#socials a{
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+.fa {
+    width: 15px;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+    background: #fff;
+    color: aqua;
+
+}
+.fa:hover {
+    opacity: 0.5;
+}
+#footer p{
+   color: #fff;
+    font-size: 12px;
+}
+#signin_header {
+    background-color: aqua;
+    display: flex;
+    height: 80px;
+    flex-direction: row;
+    justify-content: center;
+}
+#signin_header div{
+    flex-grow: 1;
+    margin: auto;
+}
+#signin_header .logo{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.title {
+    font-weight: bold;
+    color: #fff;
+    font-size: x-large;
+    text-decoration: none;
+}
+.logo img {
+    height: 60px;
+    width: 60px;
+}
+#wrapper_signin {
+    display: flex;
+    height: 600px;
+    background-image: url("backgroundsignin.jpg");
+    background-size: cover;
+    justify-content: space-between;
+    flex-direction: row;
+}
+#about {
+    margin: auto;
+}
+#sign_up {
+    margin: auto;
+}
+#signup_btn{
+    margin-top: 40px;
+    margin-left: 40%;
+    font-size: 70px;
+    border-radius: 7px;
+}
+.signin{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.signin_el{
+    flex-grow: 1;
+}
+#error_username_or_password{
+    color: red;
+    font-size: 12px;
+}
+#wrapper_signup{
+    color: #fff;
+    background-color: aqua ;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#wrapper_signup input{
+    margin-top: 15px;
+}
+.error{
+
+}
+.errors{
+    color: red;
+}
