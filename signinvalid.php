@@ -1,24 +1,14 @@
 <?php
-session_start();
+include "Authentication.php";
 $signInError = "";
-$signInSuccess = false;
 if (isset($_POST["signin_btn"])) {
-    $user = $_POST["user"];
-    $psw = $_POST["psw"];
-    $handle = fopen("username.txt","r");
-    while (!feof($handle)){
-        $row = fgets($handle);
-        $explodedRow = explode(" ", $row);
-        if (is_array($explodedRow) && $user == $explodedRow[0] && password_verify($psw, trim($explodedRow[1]))) {
-            $signInSuccess = true; break;
-        }
-    }
-    if ($signInSuccess == false) {
+    $auth = new Authentication($_POST["user"], $_POST["psw"]);
+    $username = $auth->getUsername();
+    if (!$auth->Login()) {
         $signInError = "Wrong username or password";
     } else {
-        $_SESSION["signin_user"] = $user;
-        $_SESSION["status"] = "Logged In";
-        header( "location: profile.php");
-
+        $_SESSION[$username] = $username;
+        header("location: profile.php");
     }
 }
+
