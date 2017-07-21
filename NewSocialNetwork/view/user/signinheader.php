@@ -6,7 +6,7 @@
         <p>Twime</p>
     </div>
     <div class="signin">
-        <span><?php echo $this->validLogin->getError() ?></span>
+        <span><?php  ?></span>
         <form method="post" action="../public/index.php?page=authentication&action=login">
             <input id="username" type="text" name="user" placeholder="Username" class="signin_el">
             <input id="password" type="password" name="psw" placeholder="Password" class="signin_el">

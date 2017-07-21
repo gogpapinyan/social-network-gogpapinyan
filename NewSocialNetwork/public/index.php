@@ -5,7 +5,7 @@ spl_autoload_register(function ($className) {
 
     $classPath = str_replace('\\', '/', $className);
 
-    $classPath = '../class/' . $classPath . '.php';
+    $classPath = '../Class/' . $classPath . '.php';
     if (!file_exists($classPath)) {
         header('Location: index.php?page=error&action=notFound');
         die;

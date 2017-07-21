@@ -9,6 +9,7 @@
 namespace Controller;
 
 
+use Model\DataBase;
 use Model\FileModel;
 use Model\UserModel;
 use Model\ValidSignupModel;
@@ -17,14 +18,13 @@ class UserController
 {
     private $user;
     private $validSignup;
-    private $file;
+    private $database;
 
     public function __construct()
     {
         $this->user = new UserModel();
         $this->validSignup = new ValidSignupModel();
-        $this->file = new FileModel();
-        $this->file->setFileName("../DataBase/users.txt");
+        $this->database = DataBase::getInstance();
     }
 
     public function actionCreate()
@@ -65,21 +65,20 @@ class UserController
             if ($errorCount) {
                 require "../view/user/signin.php";
             } else {
-                $this->file->writeInFile($this->user->getName());
-                $this->file->writeInFile(" ");
-                $this->file->writeInFile($this->user->getSurname());
-                $this->file->writeInFile(" ");
-                $this->file->writeInFile($this->user->getEmail());
-                $this->file->writeInFile(" ");
-                $this->file->writeInFile($this->user->getUsername());
-                $this->file->writeInFile(" ");
-                $this->file->writeInFile($this->user->getPassword());
-                $this->file->writeInFile(" ");
-                $this->file->writeInFile($this->user->getGender());
-                $this->file->writeInFile("\n");
+                $query = "INSERT INTO users (name, surname, email, username, password, gender) 
+                          VALUES (:firstName, :lastName, :email,:username, :password, :gender)";
+                $statement = DataBase::getStatement($query);
+                $statement->bindParam(':firstName', $this->user->getName());
+                $statement->bindParam(':lastName', $this->user->getSurname());
+                $statement->bindParam(':email', $this->user->getEmail());
+                $statement->bindParam(':username', $this->user->getUsername());
+                $statement->bindParam(':password', $this->user->getPassword());
+                $statement->bindParam(':gender', $this->user->getGender();
                 $this->validSignup->setSignupSuccess("You're now the part of Twime. Now you need to login in");
                 require "../view/user/signin.php";
             }
+        } else {
+            require "../view/user/signin.php";
         }
 
     }

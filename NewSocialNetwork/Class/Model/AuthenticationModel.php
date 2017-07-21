@@ -59,11 +59,7 @@ class AuthenticationModel
 
     public function isSignedup()
     {
-        if ($this->file->usernamePassswordExist($this->username, $this->password)) {
-            return true;
-        }
-        return false;
+        //TODO Selecting from users table, checking from username and password field , generating error message
     }
-
 
 }
